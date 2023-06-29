@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: 'Barlow', sans-serif;
+}
+
+button {
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current active:scale-[0.98];
+}
+
+#root {
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
+}

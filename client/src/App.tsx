@@ -1,43 +1,95 @@
-import * as React from 'react'
+import { Layout } from 'components/Layout'
+import { Orders } from 'pages/Orders'
+import { Overview } from 'pages/Overview'
+import { Profile } from 'pages/Profile'
+import { AddCategory } from 'pages/categories/AddCategory'
+import { Categories } from 'pages/categories/Categories'
+import { CustomerDetails } from 'pages/customers/CustomerDetails'
+import { Customers } from 'pages/customers/Customers'
+import { AddProduct } from 'pages/products/AddProduct'
+import { Products } from 'pages/products/Products'
+import { Settings } from 'pages/settings/Settings'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-function App() {
-	const [count, setCount] = React.useState(0)
+const routes = createBrowserRouter([
+	// {
+	// 	path: '/',
+	// 	element: <Home />,
+	// },
+	{
+		path: '/',
+		element: <Layout />,
+		children: [
+			{
+				path: 'overview',
+				element: <Overview />,
+			},
+			{
+				path: 'orders',
+				element: <Orders />,
+			},
+			{
+				path: 'profile',
+				element: <Profile />,
+			},
+			{
+				path: 'categories',
+				children: [
+					{
+						index: true,
+						element: <Categories />,
+					},
+					{
+						path: 'add',
+						element: <AddCategory />,
+					},
+				],
+			},
+			{
+				path: 'products',
+				children: [
+					{
+						index: true,
+						element: <Products />,
+					},
+					{
+						path: 'add',
+						element: <AddProduct />,
+					},
+				],
+			},
+			{
+				path: 'customers',
+				children: [
+					{
+						index: true,
+						element: <Customers />,
+					},
+					{
+						path: ':id',
+						element: <CustomerDetails />,
+					},
+				],
+			},
+			{
+				path: 'settings',
+				children: [
+					{
+						index: true,
+						element: <Settings />,
+					},
+					// {
+					// 	path: ':id',
+					// 	element: <CustomerDetails />,
+					// },
+				],
+			},
+		],
+	},
+])
 
-	return (
-		<div className='flex min-h-screen flex-col items-center justify-center'>
-			<h1 className='text-2xl'>
-				<strong>Agba Cooker's 😉😎</strong> Vite + TS React Template
-			</h1>
-			<div className='flex flex-col pt-4'>
-				<button
-					onClick={() => setCount(count => count + 1)}
-					className='mx-auto rounded bg-black px-6 py-1 capitalize text-white'
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-
-			<p className='mt-10'>
-				Find me on:{' '}
-				<a
-					href='https://github.com/williamssam'
-					className='text-blue-600 underline'
-				>
-					Github
-				</a>{' '}
-				and
-				<a
-					href='https://williamssam.netlify.app/'
-					className='text-blue-600 underline'
-				>
-					Portfolio
-				</a>
-			</p>
-		</div>
-	)
+const App = () => {
+	return <RouterProvider router={routes} />
 }
 
 export default App
