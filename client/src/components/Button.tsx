@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
-
 type ButtonProps = {
-	icon: ReactNode
-	text: string
+	icon: React.ReactNode
+	text: React.ReactNode
 	type: 'button' | 'submit' | 'reset' | undefined
 	onClick?: () => void
 	className?: string

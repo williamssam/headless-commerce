@@ -1,4 +1,4 @@
-import { FileImage, Info } from '@phosphor-icons/react'
+import { FileImage, ShieldWarning } from '@phosphor-icons/react'
 import React, { HTMLInputTypeAttribute } from 'react'
 import {
 	Control,
@@ -129,7 +129,9 @@ export const TextInput = <T extends FieldValues>({
 					{renderType(type)}
 					<label
 						htmlFor={name}
-						className='absolute left-3 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-sm text-neutral-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500'
+						className={`absolute left-3 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-sm duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 ${
+							error ? 'text-red-500' : 'text-neutral-500'
+						}`}
 					>
 						{label}
 					</label>
@@ -144,7 +146,7 @@ export const TextInput = <T extends FieldValues>({
 			</div>
 			{error ? (
 				<p className='flex items-center gap-1 text-xs font-medium text-red-600'>
-					<Info size={16} weight='fill' />
+					<ShieldWarning size={15} weight='fill' />
 					<span>{error.message}</span>
 				</p>
 			) : null}

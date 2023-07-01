@@ -10,14 +10,15 @@ import { AddProduct } from 'pages/products/AddProduct'
 import { Products } from 'pages/products/Products'
 import { Settings } from 'pages/settings/Settings'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Home } from './pages/Home'
 
 const routes = createBrowserRouter([
-	// {
-	// 	path: '/',
-	// 	element: <Home />,
-	// },
 	{
 		path: '/',
+		element: <Home />,
+	},
+	{
+		// path: 'overview',
 		element: <Layout />,
 		children: [
 			{
@@ -78,10 +79,6 @@ const routes = createBrowserRouter([
 						index: true,
 						element: <Settings />,
 					},
-					// {
-					// 	path: ':id',
-					// 	element: <CustomerDetails />,
-					// },
 				],
 			},
 		],
