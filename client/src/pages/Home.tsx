@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignIn } from '@phosphor-icons/react'
 import { Button } from 'components/Button'
-import { TextInput } from 'components/TextInput'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { TextInput } from 'ui/TextInput'
 import { z } from 'zod'
 
 const schema = z.object({

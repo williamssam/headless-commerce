@@ -8,7 +8,7 @@ import {
 	useController,
 } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'
-import { InfoTooltip } from './InfoTooltip'
+import { InfoTooltip } from '../components/InfoTooltip'
 
 interface TextFieldProps<T extends FieldValues>
 	extends React.ComponentPropsWithoutRef<'input'> {

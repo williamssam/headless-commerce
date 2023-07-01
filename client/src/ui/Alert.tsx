@@ -5,6 +5,7 @@ type AlertProps = {
 	variant: 'info' | 'warning' | 'success' | 'danger'
 	text: React.ReactNode
 	className?: string
+	hasIcon?: boolean
 }
 
 const styles: Record<AlertProps['variant'], string> = {
@@ -14,13 +15,13 @@ const styles: Record<AlertProps['variant'], string> = {
 	success: 'border-b-green-600 bg-green-100 text-green-600',
 }
 
-export const Alert = ({ text, variant, className }: AlertProps) => {
+export const Alert = ({ text, variant, className, hasIcon }: AlertProps) => {
 	return (
 		<div
 			role='alert'
-			className={`flex items-center gap-2 rounded-md border-b-2 px-4 py-2 text-xs font-medium ${styles[variant]} ${className}`}
+			className={`flex items-center gap-2 rounded-md border-b-2 px-4 py-3 text-xs font-medium ${styles[variant]} ${className}`}
 		>
-			<Siren size={16} weight='fill' />
+			{hasIcon ? <Siren size={16} weight='fill' /> : null}
 			<p>{text}</p>
 		</div>
 	)

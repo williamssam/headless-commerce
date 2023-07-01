@@ -7,16 +7,16 @@ import {
 } from '@phosphor-icons/react'
 import * as Popover from '@radix-ui/react-popover'
 import { useForm } from 'react-hook-form'
-import { Button } from './Button'
-import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from './Drawer'
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from './Select'
-import { TextInput } from './TextInput'
+} from '../ui/Select'
+import { TextInput } from '../ui/TextInput'
+import { Button } from './Button'
+import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from './Drawer'
 
 const headers = ['Code', 'Start date', 'Expires', 'Quantity', 'Options']
 

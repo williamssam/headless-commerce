@@ -1,11 +1,11 @@
 import { FloppyDisk } from '@phosphor-icons/react'
-import { Alert } from 'components/Alert'
 import { Button } from 'components/Button'
 import { InfoTooltip } from 'components/InfoTooltip'
 import { PageHeader } from 'components/PageHeader'
 import { ProductVariants } from 'components/ProductVariants'
-import { TextInput } from 'components/TextInput'
 import { useForm } from 'react-hook-form'
+import { Alert } from 'ui/Alert'
+import { TextInput } from 'ui/TextInput'
 
 export const AddProduct = () => {
 	const { control, register } = useForm({})

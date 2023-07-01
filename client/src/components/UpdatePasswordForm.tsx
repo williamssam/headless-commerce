@@ -1,7 +1,7 @@
 import { FloppyDisk } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
+import { TextInput } from '../ui/TextInput'
 import { Button } from './Button'
-import { TextInput } from './TextInput'
 
 export const UpdatePasswordForm = () => {
 	const { control, register } = useForm({})

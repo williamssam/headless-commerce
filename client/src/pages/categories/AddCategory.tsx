@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FloppyDisk, Trash } from '@phosphor-icons/react'
-import { Alert } from 'components/Alert'
 import { Button } from 'components/Button'
 import { PageHeader } from 'components/PageHeader'
-import { TextInput } from 'components/TextInput'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { Alert } from 'ui/Alert'
+import { TextInput } from 'ui/TextInput'
 import { z } from 'zod'
 
 const allowedExtension = ['image/jpeg', 'image/jpg', 'image/png']

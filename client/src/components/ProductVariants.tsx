@@ -1,8 +1,8 @@
 import { DotsThreeOutline, Trash } from '@phosphor-icons/react'
 import * as Popover from '@radix-ui/react-popover'
 import { useForm } from 'react-hook-form'
+import { TextInput } from '../ui/TextInput'
 import { EditVariantForm } from './EditVariantForm'
-import { TextInput } from './TextInput'
 
 const headers = ['Variant', 'Options', 'Actions']
 

@@ -1,8 +1,8 @@
 import { FloppyDisk, PencilSimpleLine } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
+import { TextInput } from '../ui/TextInput'
 import { Button } from './Button'
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from './Drawer'
-import { TextInput } from './TextInput'
 
 export const EditVariantForm = () => {
 	const { control, register } = useForm({})

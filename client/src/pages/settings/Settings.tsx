@@ -1,5 +1,6 @@
-import { Percent, Tag, Truck } from '@phosphor-icons/react'
+import { Code, Percent, Tag, Truck } from '@phosphor-icons/react'
 import * as Tabs from '@radix-ui/react-tabs'
+import { Developer } from 'components/Developer'
 import { Discounts } from 'components/Discounts'
 import { PageHeader } from 'components/PageHeader'
 import { Shipping } from 'components/Shipping'
@@ -21,11 +22,17 @@ const tabs = [
 		name: 'tax',
 		icon: <Percent size={16} weight='fill' />,
 	},
+	{
+		id: 4,
+		name: 'developer',
+		icon: <Code size={16} weight='fill' />,
+	},
 ]
 
 const tabs_content = {
 	discounts: <Discounts />,
 	shipping: <Shipping />,
+	developer: <Developer />,
 }
 
 export const Settings = () => {
