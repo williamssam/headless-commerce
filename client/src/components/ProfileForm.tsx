@@ -230,11 +230,9 @@ export const ProfileForm = () => {
 						Delete Account
 					</h3>
 
-					<Alert
-						variant='danger'
-						text='Deleting accont is permanent and cannot be reversed.'
-						className='my-4'
-					/>
+					<Alert variant='danger' className='my-4'>
+						<p>Deleting accont is permanent and cannot be reversed.</p>
+					</Alert>
 
 					<Button
 						icon={<Trash size={16} weight='fill' />}

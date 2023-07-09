@@ -46,19 +46,29 @@ export const AddProduct = () => {
 								</button>
 							</div>
 
-							<div className='relative w-full'>
+							<div className='flex items-center gap-4'>
 								<TextInput
 									control={control}
 									register={register}
-									name='inventory_available'
-									type='number'
-									label='Inventory available'
-									inputMode='numeric'
+									name='sku'
+									type='text'
+									label='SKU'
 								/>
-								<InfoTooltip
-									text='With inventory you can set the number of available items, otherwise if you leave it empty, it will be unlimited.'
-									className='absolute right-2 top-1/2 -translate-y-1/2'
-								/>
+
+								<div className='relative w-full'>
+									<TextInput
+										control={control}
+										register={register}
+										name='inventory_available'
+										type='number'
+										label='Inventory available'
+										inputMode='numeric'
+									/>
+									<InfoTooltip
+										text='With inventory you can set the number of available items, otherwise if you leave it empty, it will be unlimited.'
+										className='absolute right-2 top-1/2 -translate-y-1/2'
+									/>
+								</div>
 							</div>
 
 							<TextInput
@@ -113,22 +123,18 @@ export const AddProduct = () => {
 							label=''
 						/>
 
-						<Alert
-							variant='info'
-							className='mt-4'
-							text={
-								<>
-									<strong>NOTE:</strong> You cannot upload more than
-									three (3) images for a product.
-								</>
-							}
-						/>
+						<Alert variant='info' className='mt-4'>
+							<p>
+								<strong>NOTE:</strong> You cannot upload more than three
+								(3) images for a product.
+							</p>
+						</Alert>
 					</fieldset>
 
 					{/* seo */}
 					<fieldset className='rounded-md border p-6'>
 						<legend className='rounded bg-neutral-800 px-6 py-1 text-xs font-bold uppercase tracking-widest text-white'>
-							SEO
+							Misc
 						</legend>
 
 						<div className='space-y-3'>

@@ -124,16 +124,12 @@ export const AddCategory = () => {
 							label=''
 						/>
 
-						<Alert
-							variant='info'
-							className='mt-4'
-							text={
-								<>
-									<strong>NOTE:</strong> You can only upload one image
-									and should not be more than 1mb.
-								</>
-							}
-						/>
+						<Alert variant='info' className='mt-4'>
+							<p>
+								<strong>NOTE:</strong> You cannot upload more than three
+								(3) images for a product.
+							</p>
+						</Alert>
 					</fieldset>
 				</div>
 

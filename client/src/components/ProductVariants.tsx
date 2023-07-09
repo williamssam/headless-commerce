@@ -1,6 +1,7 @@
 import { DotsThreeOutline, Trash } from '@phosphor-icons/react'
 import * as Popover from '@radix-ui/react-popover'
 import { useForm } from 'react-hook-form'
+import { Alert } from 'ui/Alert'
 import { TextInput } from '../ui/TextInput'
 import { EditVariantForm } from './EditVariantForm'
 
@@ -25,22 +26,21 @@ export const ProductVariants = () => {
 	return (
 		<>
 			{/* show if user has not added varaint before */}
-			{/* <div className='mt-4 space-y-2 rounded-md bg-neutral-700 p-3 text-xs text-neutral-200'>
-						<p>
-							Variants help you to sell products with slight differences,
-							but are still the same product. For example, you might sell
-							a t-shirt in different colors, or a plant pot in different
-							sizes.
-						</p>
-						<p>
-							To get started, create groups and options for your
-							variants. Groups define the type of variant (e.g. color).
-							Options are a choice your customer can make within that
-							group (e.g. blue).
-						</p>
-					</div> */}
+			<Alert variant='info' className='space-y-2'>
+				<p>
+					Variants help you to sell products with slight differences, but
+					are still the same product. For example, you might sell a t-shirt
+					in different colors, or a plant pot in different sizes.
+				</p>
 
-			<table className='w-full whitespace-nowrap rounded text-left text-sm'>
+				<p>
+					To get started, create groups and options for your variants.
+					Groups define the type of variant (e.g. color). Options are a
+					choice your customer can make within that group (e.g. blue).
+				</p>
+			</Alert>
+
+			<table className='mt-4 w-full whitespace-nowrap rounded text-left text-sm'>
 				<thead>
 					<tr className='border-b-2 border-b-neutral-300 bg-neutral-200 text-xs uppercase tracking-wide'>
 						{headers.map(header => (
