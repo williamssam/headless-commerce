@@ -1,4 +1,4 @@
-import { Siren } from '@phosphor-icons/react'
+import { SealCheck, ShieldWarning, Siren, Warning } from '@phosphor-icons/react'
 import type { PropsWithChildren } from 'react'
 
 interface AlertProps extends PropsWithChildren {
@@ -13,18 +13,22 @@ const styles: Record<AlertProps['variant'], string> = {
 	success: 'border-b-green-600 bg-green-100 text-green-600',
 }
 
+const icon: Record<AlertProps['variant'], React.ReactNode> = {
+	info: <Siren size={32} weight='fill' />,
+	warning: <ShieldWarning size={32} weight='fill' />,
+	danger: <Warning size={32} weight='fill' />,
+	success: <SealCheck size={32} weight='fill' />,
+}
+
 export const Alert = ({ children, variant, className }: AlertProps) => {
 	return (
 		<div
 			role='alert'
 			className={`relative rounded-md border-b-2 px-4 py-3 text-xs font-medium ${styles[variant]} ${className}`}
 		>
-			{/* {hasIcon ?  : null} */}
-			<Siren
-				size={32}
-				weight='fill'
-				className='absolute bottom-0 right-1 opacity-20'
-			/>
+			<div className='absolute bottom-1 right-1 opacity-20'>
+				{icon[variant]}
+			</div>
 			{children}
 		</div>
 	)

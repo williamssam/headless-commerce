@@ -1,8 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Copy, FloppyDisk, Trash } from '@phosphor-icons/react'
 import { Button } from 'components/Button'
+import { countries } from 'constants/countries'
+import { currencies } from 'constants/currencies'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Alert } from 'ui/Alert'
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from 'ui/Select'
 import { TextInput } from 'ui/TextInput'
 import { z } from 'zod'
 
@@ -170,13 +179,18 @@ export const ProfileForm = () => {
 								type='text'
 								label='Postal Code'
 							/>
-							<TextInput
-								control={control}
-								register={register}
-								name='country'
-								type='text'
-								label='Country'
-							/>
+
+							<Select {...register('country')}>
+								<SelectTrigger className='w-full'>
+									<SelectValue placeholder='Select a country' />
+								</SelectTrigger>
+
+								<SelectContent className='w-96'>
+									{countries.map(country => (
+										<SelectItem value={country}>{country}</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
 						</div>
 					</div>
 				</fieldset>
@@ -185,13 +199,20 @@ export const ProfileForm = () => {
 					<legend className='rounded bg-neutral-800 px-6 py-1 text-xs font-bold uppercase tracking-widest text-white'>
 						Currency
 					</legend>
-					<TextInput
-						control={control}
-						register={register}
-						name='currency'
-						type='text'
-						label='Currency'
-					/>
+
+					<Select {...register('currency')}>
+						<SelectTrigger className='w-full'>
+							<SelectValue placeholder='Select a currency' />
+						</SelectTrigger>
+
+						<SelectContent className='w-96'>
+							{currencies.map(currency => (
+								<SelectItem value={currency.code.toLowerCase()}>
+									{currency.code} - {currency.name}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
 				</fieldset>
 
 				<Button

@@ -1,4 +1,4 @@
-import { CaretUpDown, Check } from '@phosphor-icons/react'
+import { CaretUpDown, Checks } from '@phosphor-icons/react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import React from 'react'
 
@@ -24,11 +24,11 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<SelectPrimitive.Trigger
 		ref={ref}
-		className={`peer relative flex items-center justify-between gap-3 border-b-2 bg-neutral-100 px-3 pb-2.5 pt-5 placeholder:text-neutral-300 ${className}`}
+		className={`peer relative flex items-center justify-between gap-3 rounded border-b-2 border-b-neutral-300 bg-neutral-50 px-3 pb-2.5 pt-5 data-[placeholder]:text-neutral-500 ${className}`}
 		{...props}
 	>
 		<label className='absolute left-3 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform text-sm text-neutral-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500'>
-			Select a fruit
+			Currency (required)
 		</label>
 		{children}
 		<SelectPrimitive.Icon asChild>
@@ -48,7 +48,7 @@ const SelectItem = React.forwardRef<
 	>
 		<SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
 		<SelectPrimitive.ItemIndicator>
-			<Check size={16} weight='fill' />
+			<Checks size={16} weight='fill' />
 		</SelectPrimitive.ItemIndicator>
 	</SelectPrimitive.Item>
 ))
@@ -60,7 +60,7 @@ const SelectContent = React.forwardRef<
 	<SelectPrimitive.Portal>
 		<SelectPrimitive.Content
 			ref={ref}
-			className={`relative z-50 overflow-hidden rounded-md border bg-white text-neutral-800 shadow-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ${className}`}
+			className={`relative z-50 max-h-96 overflow-y-visible rounded-md border bg-white text-neutral-800 shadow-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ${className}`}
 			position='popper'
 			{...props}
 		>
@@ -72,3 +72,4 @@ const SelectContent = React.forwardRef<
 ))
 
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue }
+

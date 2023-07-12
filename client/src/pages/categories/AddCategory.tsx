@@ -124,10 +124,10 @@ export const AddCategory = () => {
 							label=''
 						/>
 
-						<Alert variant='info' className='mt-4'>
+						<Alert variant='warning' className='mt-4'>
 							<p>
 								<strong>NOTE:</strong> You cannot upload more than three
-								(3) images for a product.
+								(1) image for a category.
 							</p>
 						</Alert>
 					</fieldset>

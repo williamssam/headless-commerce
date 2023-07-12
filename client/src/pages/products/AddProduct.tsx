@@ -1,20 +1,56 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { FloppyDisk } from '@phosphor-icons/react'
 import { Button } from 'components/Button'
 import { InfoTooltip } from 'components/InfoTooltip'
 import { PageHeader } from 'components/PageHeader'
 import { ProductVariants } from 'components/ProductVariants'
-import { useForm } from 'react-hook-form'
+import React from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import { Alert } from 'ui/Alert'
 import { TextInput } from 'ui/TextInput'
+import { z } from 'zod'
+
+const schema = z.object({
+	name: z.string().min(1, { message: 'Product name is required' }),
+	slug: z.string().min(1, { message: 'Slug is required' }),
+	sku: z.string().min(1, { message: 'SKU is required' }).or(z.literal('')),
+	inventory_available: z.number().optional().default(0),
+	description: z
+		.string()
+		.min(1, { message: 'Description is required' })
+		.min(10, { message: 'Description must be at least 10 characters long' }),
+	price: z.number().min(1, { message: 'Price is required' }),
+	category: z.string().min(1, { message: 'Category is required' }),
+})
+
+export type AddProductFormValues = z.infer<typeof schema>
 
 export const AddProduct = () => {
-	const { control, register } = useForm({})
+	const { control, register, handleSubmit, setValue, formState } = useForm({
+		resolver: zodResolver(schema),
+	})
+
+	const productName = useWatch({
+		control,
+		name: 'name',
+	})
+
+	React.useEffect(() => {
+		if (formState.touchedFields.name) {
+			setValue('slug', productName?.replace(/\W+/g, '-').toLowerCase(), {
+				shouldTouch: true,
+			})
+		}
+	}, [formState.touchedFields.name, productName, setValue])
 
 	return (
 		<>
 			<PageHeader title='Add Product' hasBackBtn backText='Products' />
 
-			<form className='mx-auto grid max-w-7xl grid-cols-4 gap-6 py-10'>
+			<form
+				className='mx-auto grid max-w-7xl grid-cols-4 gap-6 py-10'
+				onSubmit={handleSubmit(data => console.log(data))}
+			>
 				<div className='col-span-2 space-y-8'>
 					<fieldset className='rounded-md border p-6'>
 						<legend className='rounded bg-neutral-800 px-6 py-1 text-xs font-bold uppercase tracking-widest text-white'>
@@ -34,9 +70,9 @@ export const AddProduct = () => {
 								<TextInput
 									control={control}
 									register={register}
-									name='permalink'
+									name='slug'
 									type='text'
-									label='Permalink'
+									label='Slug (required)'
 								/>
 								<button
 									type='button'
@@ -52,7 +88,7 @@ export const AddProduct = () => {
 									register={register}
 									name='sku'
 									type='text'
-									label='SKU'
+									label='SKU - Stock Keeping Unit'
 								/>
 
 								<div className='relative w-full'>
@@ -76,7 +112,7 @@ export const AddProduct = () => {
 								register={register}
 								name='description'
 								type='textarea'
-								label='Description'
+								label='Description (required)'
 							/>
 						</div>
 					</fieldset>
@@ -123,7 +159,7 @@ export const AddProduct = () => {
 							label=''
 						/>
 
-						<Alert variant='info' className='mt-4'>
+						<Alert variant='warning' className='mt-4'>
 							<p>
 								<strong>NOTE:</strong> You cannot upload more than three
 								(3) images for a product.

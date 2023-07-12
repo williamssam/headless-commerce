@@ -109,7 +109,7 @@ export const updateProductHandler = async (
 		}
 
 		const product = await findAndUpdateProduct(
-			{ id },
+			{ _id: id },
 			{ ...req.body },
 			{ new: true }
 		)

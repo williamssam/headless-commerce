@@ -73,7 +73,7 @@ export const updateCategoryHandler = async (
 		}
 
 		const category = await findAndUpdateCategory(
-			{ id },
+			{ _id: id },
 			{ ...req.body },
 			{ new: true }
 		)
@@ -104,7 +104,7 @@ export const deleteCategoryHandler = async (
 			)
 		}
 
-		await deleteCategory({ id })
+		await deleteCategory({ _id: id })
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
 			message: 'Category deleted successfully',

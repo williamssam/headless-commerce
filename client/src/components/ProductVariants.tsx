@@ -96,7 +96,7 @@ export const ProductVariants = () => {
 				</tbody>
 			</table>
 
-			<form className='mt-8'>
+			<div className='mt-8'>
 				<div className='flex items-center gap-2 pt-1'>
 					<TextInput
 						control={control}
@@ -115,12 +115,12 @@ export const ProductVariants = () => {
 				</div>
 
 				<button
-					type='submit'
+					type='button'
 					className='mt-2 rounded bg-neutral-800 px-6 py-2 text-sm text-white transition-all hover:bg-neutral-700'
 				>
 					Add Variant
 				</button>
-			</form>
+			</div>
 		</>
 	)
 }

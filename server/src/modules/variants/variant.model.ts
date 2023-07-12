@@ -33,7 +33,7 @@ const variantModel = new mongoose.Schema(
 						price: { type: Number, default: 0 },
 						quantity: { type: Number, default: 0 },
 						sku: { type: String, default: '' },
-						image_url: String,
+						image_url: { type: String, default: '' },
 					},
 					{
 						timestamps: {

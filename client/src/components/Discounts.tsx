@@ -188,7 +188,7 @@ export const Discounts = () => {
 
 			<Select>
 				<SelectTrigger className='w-[180px]'>
-					<SelectValue placeholder='Select a fruit' />
+					<SelectValue placeholder=' ' />
 				</SelectTrigger>
 
 				<SelectContent className='w-[180px]'>

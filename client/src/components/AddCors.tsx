@@ -30,10 +30,17 @@ export const AddCors = () => {
 
 			<form className='mt-5 grid grid-cols-3 gap-6'>
 				<fieldset className='col-span-2 space-y-6 rounded-md border p-6'>
-					<Alert
-						variant='warning'
-						text='You may configure a list of trusted domains (including the scheme and port) for CORS headers when using public API keys. If you configure one domain, all API responses will use that domain in the "Access-Control-Allow-Origin" header. If you specify multiple, API calls will compare against the request "Origin" header. If you leave this blank, all origins will be allowed (default).'
-					/>
+					<Alert variant='warning'>
+						<p>
+							You may configure a list of trusted domains (including the
+							scheme and port) for CORS headers when using public API
+							keys. If you configure one domain, all API responses will
+							use that domain in the "Access-Control-Allow-Origin"
+							header. If you specify multiple, API calls will compare
+							against the request "Origin" header. If you leave this
+							blank, all origins will be allowed (default).
+						</p>
+					</Alert>
 
 					<div className='space-y-3'>
 						<TextInput

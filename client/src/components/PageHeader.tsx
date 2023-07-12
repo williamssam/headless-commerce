@@ -39,7 +39,7 @@ export const PageHeader = ({
 						<p className='text-xs font-medium text-neutral-400'>
 							{breadcrumb}
 						</p>
-						<h2 className='pt-1 text-5xl font-black text-neutral-100'>
+						<h2 className='pt-1 text-5xl font-black capitalize text-neutral-100'>
 							{title}
 						</h2>
 					</div>

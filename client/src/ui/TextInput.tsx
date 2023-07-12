@@ -65,6 +65,7 @@ export const TextInput = <T extends FieldValues>({
 						thousandsGroupStyle='thousand'
 						prefix={isCurrency ? '₦' : ''}
 						placeholder=''
+						aria-invalid={error ? 'true' : 'false'}
 						id={name}
 						{...register(name)}
 						type='text'
@@ -87,6 +88,7 @@ export const TextInput = <T extends FieldValues>({
 							multiple
 							{...register(name)}
 							name='product_images'
+							aria-invalid={error ? 'true' : 'false'}
 							id='product_images'
 							className='peer sr-only'
 						/>
@@ -109,6 +111,7 @@ export const TextInput = <T extends FieldValues>({
 					<input
 						type={type}
 						id={name}
+						aria-invalid={error ? 'true' : 'false'}
 						{...register(name)}
 						className={`peer block w-full appearance-none rounded border-0 border-b-2 px-3 pb-2.5 pt-5 text-sm font-medium text-neutral-900 focus:border-blue-600 focus:outline-none focus:ring-0 ${
 							error
@@ -145,7 +148,10 @@ export const TextInput = <T extends FieldValues>({
 				) : null}
 			</div>
 			{error ? (
-				<p className='flex items-center gap-1 text-xs font-medium text-red-600'>
+				<p
+					className='flex items-center gap-1 text-xs font-medium text-red-600'
+					role='alert'
+				>
 					<ShieldWarning size={15} weight='fill' />
 					<span>{error.message}</span>
 				</p>
