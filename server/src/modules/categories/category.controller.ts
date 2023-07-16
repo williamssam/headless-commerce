@@ -66,7 +66,7 @@ export const updateCategoryHandler = async (
 		const categoryExists = await findCategoryById(id)
 		if (!categoryExists) {
 			throw new ApiError(
-				'Category does not exists!',
+				'Category not found!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -98,7 +98,7 @@ export const deleteCategoryHandler = async (
 		const categoryExists = await findCategoryById(id)
 		if (!categoryExists) {
 			throw new ApiError(
-				'Category does not exists!',
+				'Category not found!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -126,7 +126,7 @@ export const getCategoryHandler = async (
 		const category = await findCategoryById(id)
 		if (!category) {
 			throw new ApiError(
-				'Category does not exists!',
+				'Category not found!',
 				false,
 				HttpStatusCode.NOT_FOUND
 			)

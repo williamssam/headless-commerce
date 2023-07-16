@@ -39,7 +39,7 @@ export const createProductHandler = async (
 		const productWithSlugExists = await findProduct({ slug })
 		if (productWithSlugExists) {
 			throw new ApiError(
-				'Product with this slug already exists',
+				'Product with this slug already exist',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -49,7 +49,7 @@ export const createProductHandler = async (
 		const categoryExists = await findCategory({ _id: categories })
 		if (!categoryExists) {
 			throw new ApiError(
-				'Category does not exists!',
+				'Category not found!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -93,7 +93,7 @@ export const updateProductHandler = async (
 		const productExists = await findProductById(id)
 		if (!productExists) {
 			throw new ApiError(
-				'Product does not exists!',
+				'Product not found!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -134,7 +134,7 @@ export const deleteProductHandler = async (
 		const product = await findProductById(id)
 		if (!product) {
 			throw new ApiError(
-				'Product does not exists!',
+				'Product not found!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
@@ -181,7 +181,7 @@ export const getProductHandler = async (
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
-			message: 'Product fetched successfully',
+			message: 'Product retrieved successfully',
 			data: product,
 		})
 	} catch (error) {

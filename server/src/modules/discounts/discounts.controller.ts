@@ -55,7 +55,7 @@ export const updateDiscountHandler = async (
 	const discountExists = await findDiscount({ id })
 	if (!discountExists) {
 		throw new ApiError(
-			'Discount does not exist',
+			'Discount not found!',
 			false,
 			HttpStatusCode.BAD_REQUEST
 		)
@@ -120,7 +120,7 @@ export const getDiscountHandler = async (
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
-			message: 'Discount fetched successfully',
+			message: 'Discount retrieved successfully',
 			data: discount,
 		})
 	} catch (error) {
