@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
-import { HttpStatusCode } from '../../@types/types'
-import { ApiError } from '../../exceptions/apiError'
+import { HttpStatusCode } from '../../../@types/types'
+import { ApiError } from '../../../exceptions/apiError'
+import AssetModel from '../assets/assets.models'
+import { findAsset } from '../assets/assets.service'
 import {
 	CreateCategoryInput,
 	DeleteCategoryInput,
@@ -15,7 +17,7 @@ import {
 	findCategory,
 	findCategoryById,
 	getAllCategories,
-	getTotalCategory,
+	totalCategory,
 } from './category.service'
 
 export const createCategoryHandler = async (
@@ -24,7 +26,7 @@ export const createCategoryHandler = async (
 	next: NextFunction
 ) => {
 	try {
-		const { name, slug } = req.body
+		const { name, slug, asset } = req.body
 
 		const categoryNameExits = await findCategory({ name })
 		if (categoryNameExits) {
@@ -45,6 +47,12 @@ export const createCategoryHandler = async (
 		}
 
 		const category = await createCategory(req.body)
+		const assetID = await findAsset({ _id: asset })
+		await AssetModel.updateOne({ _id: assetID }, { parent_id: category._id })
+		// const assetID = await AssetModel.find({ _id: { $in: asset } })
+
+		// const categoryCreated = await findCategory({ _id: category._id }
+
 		return res.status(HttpStatusCode.CREATED).json({
 			success: true,
 			message: 'Category created successfully',
@@ -154,7 +162,7 @@ export const getAllCategoriesHandler = async (
 		const skip = (page - 1) * limit
 
 		const categories = await getAllCategories({ skip, limit })
-		const total = await getTotalCategory()
+		const total = await totalCategory()
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,

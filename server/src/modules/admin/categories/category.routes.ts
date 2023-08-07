@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { config } from '../../config'
-import { validateResource } from '../../middlewares/validateResource'
+import { config } from '../../../config'
+import { validateResource } from '../../../middlewares/validateResource'
 import {
 	createCategoryHandler,
 	deleteCategoryHandler,

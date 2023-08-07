@@ -1,20 +1,20 @@
 import { Router } from 'express'
-import { config } from '../../config'
-import { validateResource } from '../../middlewares/validateResource'
+import { config } from '../../../config'
+import { validateResource } from '../../../middlewares/validateResource'
 import {
 	createProductVariantHandler,
 	deleteProductVariantHandler,
 	getAllProductVariantsHandler,
 	getProductVariantHandler,
 	updateProductVariantHandler,
-} from '../variants/variant.controller'
+} from './variant.controller'
 import {
 	createProductVariantSchema,
 	deleteProductVariantSchema,
 	getProductVariantSchema,
 	getProductVariantsSchema,
 	updateProductVariantSchema,
-} from '../variants/variant.schema'
+} from './variant.schema'
 
 /* Product variants routes */
 export default (router: Router) => {

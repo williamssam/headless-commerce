@@ -1,12 +1,21 @@
+import { HttpStatusCode } from '../@types/types'
+import { ApiError } from '../exceptions/apiError'
+
 const whitelist = ['http://localhost:5173']
 
 export const corsOptions = (
 	origin: string | undefined,
 	callback: (err: Error | null, allow?: boolean) => void
 ) => {
-	if (whitelist.indexOf(origin as string) !== -1 || !origin) {
+	if (whitelist.includes(origin as string) || !origin) {
 		callback(null, true)
 	} else {
-		callback(new Error('Not allowed by CORS'))
+		callback(
+			new ApiError(
+				`CORS error. Origin: ${origin} not allowed`,
+				false,
+				HttpStatusCode.BAD_REQUEST
+			)
+		)
 	}
 }

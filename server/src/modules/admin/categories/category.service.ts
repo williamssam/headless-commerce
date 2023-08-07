@@ -29,7 +29,7 @@ export const getAllCategories = ({
 	return CategoryModel.find({}).limit(limit).skip(skip)
 }
 
-export const getTotalCategory = () => {
+export const totalCategory = () => {
 	return CategoryModel.estimatedDocumentCount()
 }
 

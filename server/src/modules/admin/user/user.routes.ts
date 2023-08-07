@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { config } from '../../config'
-import { deserializeUser } from '../../middlewares/deserializeUser'
-import { requireUser } from '../../middlewares/requireUser'
-import { validateResource } from '../../middlewares/validateResource'
+import { config } from '../../../config'
+import { deserializeUser } from '../../../middlewares/deserializeUser'
+import { requireUser } from '../../../middlewares/requireUser'
+import { validateResource } from '../../../middlewares/validateResource'
 import {
 	changePasswordHandler,
 	createUserHandler,

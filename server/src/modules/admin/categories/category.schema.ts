@@ -18,9 +18,9 @@ const payload = {
 				required_error: 'Category description is required',
 			})
 			.trim(),
-		image_url: z
+		asset: z
 			.string({
-				required_error: 'Image url is required',
+				required_error: 'Asset id is required',
 			})
 			.trim()
 			.default(''),

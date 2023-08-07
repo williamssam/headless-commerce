@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
-import { HttpStatusCode } from '../../@types/types'
-import { ApiError } from '../../exceptions/apiError'
+import { HttpStatusCode } from '../../../@types/types'
+import { ApiError } from '../../../exceptions/apiError'
 import {
 	findAndUpdateManyCategory,
 	findCategory,

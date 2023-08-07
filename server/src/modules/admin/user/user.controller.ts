@@ -1,8 +1,13 @@
+import argon2 from 'argon2'
 import { NextFunction, Request, Response } from 'express'
 import { customAlphabet, nanoid } from 'nanoid'
-import { HttpStatusCode } from '../../@types/types'
-import { ApiError } from '../../exceptions/apiError'
-import { signJWT } from '../../utils/jwt.utils'
+import { HttpStatusCode } from '../../../@types/types'
+import { ApiError } from '../../../exceptions/apiError'
+import { forgetPasswordMail } from '../../../templates/forgetPasswordMail'
+import { verifyEmailMail } from '../../../templates/verifyEmailMail'
+import { welcomeEmail } from '../../../templates/welcomeMail'
+import { signJWT } from '../../../utils/jwt.utils'
+import { sendMail } from '../../../utils/mailer'
 import {
 	ChangePasswordInput,
 	CreateUserInput,
@@ -56,8 +61,15 @@ export const createUserHandler = async (
 		user.business.email = email
 		user.business.name = business_name
 		user.verification_code = customNano()
-		await user.save()
 
+		await sendMail({
+			to: user.business.email,
+			from: 'Headless Commerce <admin@headlesscommerce.com>',
+			subject: 'Verify your email address',
+			html: verifyEmailMail({ otp: user.verification_code }),
+		})
+
+		await user.save()
 		return res.status(HttpStatusCode.CREATED).json({
 			success: true,
 			message: 'User created successfully',
@@ -82,6 +94,13 @@ export const resendOtpHandler = async (
 		}
 
 		user.verification_code = customNano()
+		await sendMail({
+			to: user.business.email,
+			from: 'Headless Commerce <admin@headlesscommerce.com>',
+			subject: 'Re: Verify your email address',
+			html: verifyEmailMail({ otp: user.verification_code }),
+		})
+
 		await user.save()
 
 		// TODO: Send otp to user email address
@@ -128,6 +147,14 @@ export const verifyUserHandler = async (
 
 		user.verified = true
 		user.verification_code = ''
+
+		await sendMail({
+			to: user.business.email,
+			from: 'Headless Commerce <admin@headlesscommerce.com>',
+			subject: 'Welcome to Headless Commerce',
+			html: welcomeEmail({ name: user.business.name }),
+		})
+
 		await user.save()
 
 		return res.status(HttpStatusCode.OK).json({
@@ -215,10 +242,24 @@ export const forgetPasswordHandler = async (
 			)
 		}
 
-		user.password_reset_code = nanoid()
+		// TODO: send email to user with token and id
+		const token = nanoid()
+		const hash = await argon2.hash(token)
+		user.password_reset_code = hash
+
+		console.log('token', token)
+		await sendMail({
+			to: user.business.email,
+			from: 'Headless Commerce <admin@headlesscommerce.com>',
+			subject: 'Reset your password',
+			html: forgetPasswordMail({
+				id: user._id,
+				token,
+				name: user.business.name,
+			}),
+		})
 		await user.save()
 
-		// TODO: send email to user with password reset code
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
 			message: 'Password reset code sent successfully',
@@ -235,21 +276,26 @@ export const resetPasswordHandler = async (
 	next: NextFunction
 ) => {
 	try {
-		const { id, password_reset_code } = req.params
+		const { id } = req.params
+		const { password, password_reset_code } = req.body
 		const user = await findUserById(id)
 		if (!user) {
 			throw new ApiError('User not found', false, HttpStatusCode.BAD_REQUEST)
 		}
 
-		if (user.password_reset_code !== password_reset_code) {
+		const isPasswordResetCodeValid = await argon2.verify(
+			user.password_reset_code as string,
+			password_reset_code
+		)
+		if (!isPasswordResetCodeValid) {
 			throw new ApiError(
-				'Password reset code is incorrect',
+				'Invalid or expired password reset code',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)
 		}
 
-		user.password = req.body.password
+		user.password = password
 		user.password_reset_code = ''
 		await user.save()
 

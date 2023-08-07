@@ -21,7 +21,6 @@ app.use(cookieParser())
 app.use(compression())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-// app.use(deserializeUser)
 
 app.use(routes())
 app.use(errorHandler)

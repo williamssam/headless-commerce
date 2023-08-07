@@ -104,7 +104,21 @@ export const forgotPasswordSchema = z.object({
 	body: payload.body.pick({ email: true }),
 })
 export const resetPasswordSchema = z.object({
-	body: payload.body.pick({ password: true }),
+	body: z.object({
+		password: z
+			.string({
+				required_error: 'Password is required',
+			})
+			.min(6, 'Password must be at least 6 characters')
+			.regex(
+				/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+				'Password must contain at least one letter, one number and one special character'
+			)
+			.trim(),
+		password_reset_code: z.string({
+			required_error: 'Password reset code is required',
+		}),
+	}),
 	params: z.object({
 		id: z
 			.string({
@@ -114,9 +128,6 @@ export const resetPasswordSchema = z.object({
 			.refine(val => isObjectIdOrHexString(val), {
 				message: 'Id is not valid',
 			}),
-		password_reset_code: z.string({
-			required_error: 'Password reset code is required',
-		}),
 	}),
 })
 export const changePasswordSchema = z.object({
@@ -137,12 +148,6 @@ export const changePasswordSchema = z.object({
 export const resendOTPSchema = z.object({
 	...params,
 })
-
-/*  - verify if email exists, if it exists send reset link to users email
-sample: https://example.com/reset-password/:user-id/:password-reset-code
-misc: add token expiring after 5mins
-// - send user id aswell with the reset link
- */
 
 export type CreateUserInput = z.TypeOf<typeof createUserSchema>['body']
 export type UpdateUserInput = z.TypeOf<typeof updateUserSchema>

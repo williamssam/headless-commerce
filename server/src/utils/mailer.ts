@@ -1,12 +1,23 @@
 import nodemailer, { type SendMailOptions } from 'nodemailer'
-import { config } from '../config'
 import log from './logger'
 
-const smtp = config.smtp
+// FIXME: REMEMBER TO CHANGE THIS BEFORE GOING TO
+
+// const smtp = config.smtp
+
+// test details
+const smtp = {
+	host: 'smtp.ethereal.email',
+	port: 587,
+	auth: {
+		user: 'allison.hoeger@ethereal.email',
+		pass: 'kCmkwCUDMCXPQQpPMn',
+	},
+}
 
 const transporter = nodemailer.createTransport({
 	...smtp,
-	auth: { user: smtp.user, pass: smtp.pass },
+	connectionTimeout: 5 * 60 * 1000,
 })
 
 export const sendMail = async (payload: SendMailOptions) => {
