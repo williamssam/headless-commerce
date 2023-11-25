@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { AssetDocument } from '../assets/assets.models'
+import { AssetDocument } from '../assets/assets.model'
 
 export interface CategoryDocument extends mongoose.Document {
 	id: string

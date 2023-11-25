@@ -71,7 +71,7 @@ export const AddCategory = () => {
 		<>
 			<PageHeader title='Add Category' hasBackBtn backText='Categories' />
 
-			<form className='mx-auto grid max-w-7xl grid-cols-6 gap-10 py-10'>
+			<form className='mx-auto grid max-w-6xl grid-cols-6 gap-10 py-10'>
 				<div className='col-span-3 space-y-8'>
 					<fieldset className='rounded-md border p-6'>
 						<legend className='rounded bg-neutral-800 px-6 py-1 text-xs font-bold uppercase tracking-widest text-white'>

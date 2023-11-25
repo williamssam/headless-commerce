@@ -20,6 +20,14 @@ const icon: Record<AlertProps['variant'], React.ReactNode> = {
 	success: <SealCheck size={32} weight='fill' />,
 }
 
+/**
+ * Renders an Alert component with the specified variant, displaying the provided children.
+ *
+ * @param {AlertProps} children - The content to be displayed inside the Alert component.
+ * @param {string} variant - The variant of the Alert component, determining its appearance.
+ * @param {string} className - Additional CSS classes to be applied to the Alert component.
+ * @return {JSX.Element} The rendered Alert component.
+ */
 export const Alert = ({ children, variant, className }: AlertProps) => {
 	return (
 		<div

@@ -36,12 +36,15 @@ export const Products = () => {
 				to='add'
 			/>
 
-			<section className='mx-auto max-w-7xl py-10'>
+			<section className='mx-auto max-w-6xl py-10'>
 				<table className='mt-3 w-full whitespace-nowrap rounded text-left text-sm'>
 					<thead>
 						<tr className='border-b-2 border-b-neutral-300 bg-neutral-200 text-xs uppercase tracking-wide [&>*:nth-child(2)]:text-center [&>*:nth-child(3)]:text-center [&>*:nth-child(4)]:w-[10%]'>
 							{headers.map(header => (
-								<th className='p-4 font-medium first:w-1/2 last:text-right'>
+								<th
+									className='p-4 font-medium first:w-1/2 last:text-right'
+									key={header}
+								>
 									{header}
 								</th>
 							))}

@@ -47,12 +47,15 @@ export const Customers = () => {
 				to='add'
 			/>
 
-			<section className='mx-auto max-w-7xl py-10'>
+			<section className='mx-auto max-w-6xl py-10'>
 				<table className='mt-3 w-full whitespace-nowrap rounded text-left text-sm'>
 					<thead>
 						<tr className='border-b-2 border-b-neutral-300 bg-neutral-200 text-xs uppercase tracking-wide [&>*:nth-child(4)]:text-center [&>*:nth-child(5)]:text-center'>
 							{headers.map(header => (
-								<th className='p-4 font-medium last:text-right'>
+								<th
+									className='p-4 font-medium last:text-right'
+									key={header}
+								>
 									{header}
 								</th>
 							))}

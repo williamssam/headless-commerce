@@ -4,7 +4,7 @@ export const Overview = () => {
 	return (
 		<>
 			<div className='bg-neutral-900 pb-24 pt-16'>
-				<div className='mx-auto max-w-7xl'>
+				<div className='mx-auto max-w-6xl'>
 					<p className='text-xs font-medium text-neutral-400'>
 						Home / Overview
 					</p>
@@ -20,7 +20,7 @@ export const Overview = () => {
 					</p>
 				</div>
 			</div>
-			<section className='mx-auto max-w-7xl'>
+			<section className='mx-auto max-w-6xl'>
 				<Metrics />
 			</section>
 		</>

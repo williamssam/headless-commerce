@@ -8,7 +8,7 @@ export default {
 				barlow: ['Barlow', 'sans-serif'],
 			},
 			gridTemplateColumns: {
-				fluid: 'repeat(auto-fit, minmax(300px, 1fr))',
+				fluid: 'repeat(auto-fit, minmax(250px, 1fr))',
 			},
 			keyframes: {
 				slideUpAndFade: {

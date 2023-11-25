@@ -22,7 +22,7 @@ export const PageHeader = ({
 
 	return (
 		<div className='bg-neutral-900 py-14'>
-			<div className='mx-auto flex max-w-7xl items-center justify-between gap-2'>
+			<div className='mx-auto flex max-w-6xl items-center justify-between gap-2'>
 				<div>
 					{hasBackBtn ? (
 						<button

@@ -29,7 +29,7 @@ export const CustomerDetails = () => {
 				backText='Customers'
 			/>
 
-			<section className='mx-auto grid max-w-7xl grid-cols-4 gap-6 py-10'>
+			<section className='mx-auto grid max-w-6xl grid-cols-4 gap-6 py-10'>
 				<div className='col-span-2 space-y-6'>
 					<div className='rounded-md border border-neutral-200 bg-neutral-100 p-6'>
 						<header className='flex items-center justify-between gap-2'>

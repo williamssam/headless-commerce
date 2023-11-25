@@ -48,7 +48,7 @@ export const AddProduct = () => {
 			<PageHeader title='Add Product' hasBackBtn backText='Products' />
 
 			<form
-				className='mx-auto grid max-w-7xl grid-cols-4 gap-6 py-10'
+				className='mx-auto grid max-w-6xl grid-cols-4 gap-6 py-10'
 				onSubmit={handleSubmit(data => console.log(data))}
 			>
 				<div className='col-span-2 space-y-8'>

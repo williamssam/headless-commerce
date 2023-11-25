@@ -1,5 +1,5 @@
 import type { FilterQuery, QueryOptions, UpdateQuery } from 'mongoose'
-import AssetModel, { AssetDocument, type AssetInput } from './assets.models'
+import AssetModel, { AssetDocument, type AssetInput } from './assets.model'
 
 export const createAssets = (input: AssetInput[]) => {
 	return AssetModel.insertMany(input)

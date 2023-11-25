@@ -16,7 +16,10 @@ export const findCategory = (
 	query: FilterQuery<CategoryDocument>,
 	options: QueryOptions = { lean: true }
 ) => {
-	return CategoryModel.findOne(query, {}, options)
+	return CategoryModel.findOne(query, {}, options).populate(
+		'asset',
+		'id url resource_type'
+	)
 }
 
 export const getAllCategories = ({
@@ -26,7 +29,10 @@ export const getAllCategories = ({
 	skip: number
 	limit: number
 }) => {
-	return CategoryModel.find({}).limit(limit).skip(skip)
+	return CategoryModel.find({})
+		.limit(limit)
+		.skip(skip)
+		.populate('asset', 'id url resource_type')
 }
 
 export const totalCategory = () => {

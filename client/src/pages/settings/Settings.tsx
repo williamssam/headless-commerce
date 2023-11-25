@@ -42,7 +42,7 @@ export const Settings = () => {
 		<>
 			<PageHeader breadcrumb='Home / Settings' title='Settings' />
 
-			<section className='mx-auto max-w-7xl py-10'>
+			<section className='mx-auto max-w-6xl py-10'>
 				<Tabs.Root
 					defaultValue={hash ? hash.replace('#', '') : tabs[0].name}
 					orientation='vertical'

@@ -5,7 +5,7 @@ export const Orders = () => {
 		<>
 			<PageHeader breadcrumb='Home / Orders' hasAdd title='Orders' />
 
-			<section className='mx-auto max-w-7xl'></section>
+			<section className='mx-auto max-w-6xl'></section>
 		</>
 	)
 }

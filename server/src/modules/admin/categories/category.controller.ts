@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { HttpStatusCode } from '../../../@types/types'
 import { ApiError } from '../../../exceptions/apiError'
-import AssetModel from '../assets/assets.models'
+import AssetModel from '../assets/assets.model'
 import { findAsset } from '../assets/assets.service'
 import {
 	CreateCategoryInput,
@@ -47,11 +47,10 @@ export const createCategoryHandler = async (
 		}
 
 		const category = await createCategory(req.body)
+
+		// find asset with the id and add the category id to the parent id property of the particular asset
 		const assetID = await findAsset({ _id: asset })
 		await AssetModel.updateOne({ _id: assetID }, { parent_id: category._id })
-		// const assetID = await AssetModel.find({ _id: { $in: asset } })
-
-		// const categoryCreated = await findCategory({ _id: category._id }
 
 		return res.status(HttpStatusCode.CREATED).json({
 			success: true,

@@ -41,7 +41,10 @@ export const CustomerOrderHistory = () => {
 				<thead>
 					<tr className='border-b-2 border-b-neutral-300 bg-neutral-200 text-xs uppercase tracking-wide'>
 						{headers.map(header => (
-							<th className='p-4 font-medium last:text-right'>
+							<th
+								className='p-4 font-medium last:text-right'
+								key={header}
+							>
 								{header}
 							</th>
 						))}

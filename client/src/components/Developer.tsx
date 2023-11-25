@@ -52,7 +52,9 @@ export const Developer = () => {
 					<thead>
 						<tr className='border-b-2 border-b-neutral-300 bg-neutral-200 text-xs uppercase tracking-wide [&>*:nth-child(4)]:text-center [&>*:nth-child(5)]:text-right'>
 							{headers.map(header => (
-								<th className='p-4 font-medium'>{header}</th>
+								<th className='p-4 font-medium' key={header}>
+									{header}
+								</th>
 							))}
 						</tr>
 					</thead>
