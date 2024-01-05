@@ -3,7 +3,7 @@ import multer from 'multer'
 import { config } from '../../../config'
 import { validateResource } from '../../../middlewares/validateResource'
 import {
-	createAsseteHandler,
+	createAssetHandler,
 	deleteAssetHandler,
 	getAllAssetsHandler,
 } from './assets.controller'
@@ -17,7 +17,7 @@ export default (router: Router) => {
 	router.post(
 		`${config.routePrefix}/asset`,
 		upload.array('images'),
-		createAsseteHandler
+		createAssetHandler
 	)
 
 	/**

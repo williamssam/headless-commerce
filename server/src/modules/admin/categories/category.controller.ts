@@ -75,7 +75,7 @@ export const updateCategoryHandler = async (
 			throw new ApiError(
 				'Category not found!',
 				false,
-				HttpStatusCode.BAD_REQUEST
+				HttpStatusCode.NOT_FOUND
 			)
 		}
 
@@ -107,7 +107,7 @@ export const deleteCategoryHandler = async (
 			throw new ApiError(
 				'Category not found!',
 				false,
-				HttpStatusCode.BAD_REQUEST
+				HttpStatusCode.NOT_FOUND
 			)
 		}
 

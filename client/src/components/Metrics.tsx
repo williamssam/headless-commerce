@@ -13,19 +13,19 @@ const metrics = [
 	},
 	{
 		id: 2,
-		name: 'Total Orders',
+		name: 'Total orders',
 		value: 279789,
 		icon: <ShoppingBagOpen size={20} weight='fill' />,
 	},
 	{
 		id: 3,
-		name: 'Total Products',
+		name: 'Total products',
 		value: 185896,
 		icon: <ShoppingBag size={20} weight='fill' />,
 	},
 	{
 		id: 4,
-		name: 'Total Products',
+		name: 'Total products',
 		value: 185896,
 		icon: <ShoppingBag size={20} weight='fill' />,
 	},

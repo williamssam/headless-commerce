@@ -1,17 +1,17 @@
 import nodemailer, { type SendMailOptions } from 'nodemailer'
 import log from './logger'
 
-// FIXME: REMEMBER TO CHANGE THIS BEFORE GOING TO
+// FIXME: REMEMBER TO CHANGE THIS BEFORE GOING TO PRODUCTION
 
 // const smtp = config.smtp
 
 // test details
 const smtp = {
-	host: 'smtp.ethereal.email',
-	port: 587,
+	host: 'localhost',
+	port: 1025,
 	auth: {
-		user: 'allison.hoeger@ethereal.email',
-		pass: 'kCmkwCUDMCXPQQpPMn',
+		user: 'project.1',
+		pass: 'secret.1',
 	},
 }
 

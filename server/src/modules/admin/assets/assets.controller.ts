@@ -14,7 +14,7 @@ import {
 
 cloudinary.config({ ...config.cloudinary })
 
-export const createAsseteHandler = async (
+export const createAssetHandler = async (
 	req: Request<{}, {}, { images: Express.Multer.File[] }>,
 	res: Response,
 	next: NextFunction
@@ -23,7 +23,7 @@ export const createAsseteHandler = async (
 		const files = req.files
 		if (!files) {
 			throw new ApiError(
-				'No image(s) provided',
+				'No image(s) provided!',
 				false,
 				HttpStatusCode.BAD_REQUEST
 			)

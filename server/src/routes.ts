@@ -12,7 +12,9 @@ import { sendMail } from './utils/mailer'
 const router = express.Router()
 
 export default (): express.Router => {
-	router.get('/healthcheck', (_, res) => res.sendStatus(200))
+	router.get(`${config.routePrefix}/health-check`, (_, res) =>
+		res.sendStatus(200)
+	)
 
 	userRoutes(router)
 	productRoutes(router)

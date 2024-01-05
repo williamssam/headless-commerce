@@ -72,7 +72,7 @@ export const createUserHandler = async (
 		await user.save()
 		return res.status(HttpStatusCode.CREATED).json({
 			success: true,
-			message: 'User created successfully',
+			message: 'User created successfully!',
 			data: user,
 		})
 	} catch (error) {
@@ -182,7 +182,7 @@ export const loginUserHandler = async (
 			throw new ApiError(message, false, HttpStatusCode.BAD_REQUEST)
 		}
 
-		// FIXME: don't forget to redirect user to their login details with their email address if registed in the url
+		// FIXME: don't forget to redirect user to their login details with their email address if registered in the url
 		if (!user.verified) {
 			throw new ApiError(
 				'Email address is not verified',

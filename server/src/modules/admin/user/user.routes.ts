@@ -38,7 +38,7 @@ export default (router: Router) => {
 	)
 
 	/**
-	 * @description Register user endpoint
+	 * @description Resend OTP endpoint
 	 */
 	router.get(
 		`${config.routePrefix}/resend-otp/:id`,
@@ -57,7 +57,7 @@ export default (router: Router) => {
 	)
 
 	/**
-	 * @description Login user endpoint
+	 * @description Login user endpoint, using email and password
 	 */
 	router.post(
 		`${config.routePrefix}/login`,
