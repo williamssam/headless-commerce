@@ -30,7 +30,7 @@ export const createProductHandler = async (
 ) => {
 	try {
 		/*
-			4. increate the product count in category document with the id passed
+			4. increase the product count in category document with the id passed
 			5. populate related products*
 			6. populate the discount field*
 			7. fix the "conditionals" field
@@ -196,7 +196,7 @@ export const getAllProductsHandler = async (
 ) => {
 	try {
 		/*
-			Add ability to filter products based on certain conditions like "category slug", "query: permalink and name", "price: higher or lower than price passsed", "by active or inactive product", "by inventory.managed", "sort by: id, name, created_at, updated_at, price", "sort direction: ascending or descending"
+			Add ability to filter products based on certain conditions like "category slug", "query: permalink and name", "price: higher or lower than price passed", "by active or inactive product", "by inventory.managed", "sort by: id, name, created_at, updated_at, price", "sort direction: ascending or descending"
 		*/
 		const page = parseInt(req.params.page as string) || 1
 
@@ -208,7 +208,7 @@ export const getAllProductsHandler = async (
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
-			message: 'All products were retrieved successfully!',
+			message: 'All products retrieved successfully!',
 			data: products,
 			meta: {
 				total,

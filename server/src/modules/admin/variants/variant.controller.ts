@@ -211,7 +211,7 @@ export const getAllProductVariantsHandler = async (
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
-			message: 'Product variants were retrieved successfully!',
+			message: 'Product variants  retrieved successfully!',
 			data: product?.variants,
 		})
 	} catch (error) {

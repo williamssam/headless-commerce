@@ -165,7 +165,7 @@ export const getAllCategoriesHandler = async (
 
 		return res.status(HttpStatusCode.OK).json({
 			success: true,
-			message: 'All categories were retrieved successfully!',
+			message: 'All categories  retrieved successfully!',
 			data: categories,
 			meta: {
 				total,

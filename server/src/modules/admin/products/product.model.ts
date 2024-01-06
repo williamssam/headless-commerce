@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import { CategoryDocument } from '../categories/category.model'
-import { VariantDocument } from '../variants/variant.model'
+import type { CategoryDocument } from '../categories/category.model'
+import type { VariantDocument } from '../variants/variant.model'
 
 type Inventory = {
 	managed: boolean
